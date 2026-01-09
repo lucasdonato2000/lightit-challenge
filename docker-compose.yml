@@ -40,24 +40,6 @@ services:
     container_name: patient_backend
     ports:
       - "8000:8000"
-    environment:
-      DB_CONNECTION: pgsql
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_DATABASE: patient_registration
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      QUEUE_CONNECTION: redis
-      MAIL_MAILER: smtp
-      MAIL_HOST: sandbox.smtp.mailtrap.io
-      MAIL_PORT: 2525
-      MAIL_USERNAME: ${MAILTRAP_USERNAME}
-      MAIL_PASSWORD: ${MAILTRAP_PASSWORD}
-      MAIL_ENCRYPTION: tls
-      APP_ENV: local
-      APP_DEBUG: "true"
     volumes:
       - ./backend:/var/www/html
       - /var/www/html/vendor
@@ -76,22 +58,6 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: patient_queue
-    environment:
-      DB_CONNECTION: pgsql
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_DATABASE: patient_registration
-      DB_USERNAME: postgres
-      DB_PASSWORD: postgres
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      QUEUE_CONNECTION: redis
-      MAIL_MAILER: smtp
-      MAIL_HOST: sandbox.smtp.mailtrap.io
-      MAIL_PORT: 2525
-      MAIL_USERNAME: ${MAILTRAP_USERNAME}
-      MAIL_PASSWORD: ${MAILTRAP_PASSWORD}
-      MAIL_ENCRYPTION: tls
     volumes:
       - ./backend:/var/www/html
       - /var/www/html/vendor
